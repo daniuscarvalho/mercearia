@@ -16,14 +16,14 @@ import model.Produto;
  *
  * @author felipe
  */
-public class TelaClientes extends javax.swing.JFrame {
+public class TelaEntidade extends javax.swing.JFrame {
     
     private Produto produto;
     
     /**
      * Creates new form TelaProdutos
      */
-    public TelaClientes() {
+    public TelaEntidade() {
         initComponents();
         lblObrigatorio1.setVisible(false);
         lblObrigatorio2.setVisible(false);
@@ -39,19 +39,26 @@ public class TelaClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         pnlClientes = new javax.swing.JPanel();
         lblNomeProduto = new javax.swing.JLabel();
         txtNomeProduto = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        txtPrecoProduto = new javax.swing.JTextField();
-        lblNomeProduto1 = new javax.swing.JLabel();
+        txtCNPJ = new javax.swing.JTextField();
         lblNomeProduto2 = new javax.swing.JLabel();
-        cmbUnidadeMedida = new javax.swing.JComboBox();
         btnLimpar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         lblObrigatorio1 = new javax.swing.JLabel();
         lblObrigatorio2 = new javax.swing.JLabel();
         lblObrigatorio3 = new javax.swing.JLabel();
+        txtPrecoProduto1 = new javax.swing.JTextField();
+        lblNomeProduto3 = new javax.swing.JLabel();
+        lblObrigatorio4 = new javax.swing.JLabel();
+        txtPrecoProduto2 = new javax.swing.JTextField();
+        jRadioCNPJ = new javax.swing.JRadioButton();
+        jRadioCPF = new javax.swing.JRadioButton();
         menuPrincipal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -70,7 +77,7 @@ public class TelaClientes extends javax.swing.JFrame {
 
         pnlClientes.setName(""); // NOI18N
 
-        lblNomeProduto.setText("Entre com o nome do Produto:");
+        lblNomeProduto.setText("Nome do Cliente:");
 
         txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,22 +92,13 @@ public class TelaClientes extends javax.swing.JFrame {
             }
         });
 
-        txtPrecoProduto.addActionListener(new java.awt.event.ActionListener() {
+        txtCNPJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecoProdutoActionPerformed(evt);
+                txtCNPJActionPerformed(evt);
             }
         });
 
-        lblNomeProduto1.setText("Entre com o preço do Produto:");
-
-        lblNomeProduto2.setText("Escolha a unidade de medida:");
-
-        cmbUnidadeMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Unidade", "Litro" }));
-        cmbUnidadeMedida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbUnidadeMedidaActionPerformed(evt);
-            }
-        });
+        lblNomeProduto2.setText("Telefone:");
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,46 +123,87 @@ public class TelaClientes extends javax.swing.JFrame {
         lblObrigatorio3.setForeground(new java.awt.Color(255, 0, 0));
         lblObrigatorio3.setText("*");
 
+        txtPrecoProduto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecoProduto1ActionPerformed(evt);
+            }
+        });
+
+        lblNomeProduto3.setText("Limite de Credito");
+
+        lblObrigatorio4.setForeground(new java.awt.Color(255, 0, 0));
+        lblObrigatorio4.setText("*");
+
+        txtPrecoProduto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecoProduto2ActionPerformed(evt);
+            }
+        });
+
+        jRadioCNPJ.setText("CNPJ");
+
+        jRadioCPF.setText("CPF");
+        jRadioCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioCPFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlClientesLayout = new javax.swing.GroupLayout(pnlClientes);
         pnlClientes.setLayout(pnlClientesLayout);
         pnlClientesLayout.setHorizontalGroup(
             pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlClientesLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlClientesLayout.createSequentialGroup()
-                        .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNomeProduto1)
-                            .addComponent(lblNomeProduto))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(186, 186, 186)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFechar))
+                    .addGroup(pnlClientesLayout.createSequentialGroup()
+                        .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlClientesLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNomeProduto3)
+                                    .addComponent(lblNomeProduto2)
+                                    .addComponent(lblNomeProduto)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClientesLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jRadioCPF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioCNPJ)
+                                .addGap(6, 6, 6)))
                         .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlClientesLayout.createSequentialGroup()
-                                .addComponent(lblObrigatorio2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(pnlClientesLayout.createSequentialGroup()
+                                            .addComponent(lblObrigatorio2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlClientesLayout.createSequentialGroup()
+                                            .addComponent(lblObrigatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtNomeProduto)))
+                                    .addComponent(txtPrecoProduto2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClientesLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblObrigatorio4)
                                     .addGroup(pnlClientesLayout.createSequentialGroup()
-                                        .addComponent(btnSalvar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnLimpar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFechar))
-                                    .addComponent(txtPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlClientesLayout.createSequentialGroup()
-                                .addComponent(lblObrigatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomeProduto))))
-                    .addGroup(pnlClientesLayout.createSequentialGroup()
-                        .addComponent(lblNomeProduto2)
-                        .addGap(16, 16, 16)
-                        .addComponent(lblObrigatorio3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbUnidadeMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                                        .addComponent(lblObrigatorio3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtPrecoProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         pnlClientesLayout.setVerticalGroup(
             pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlClientesLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(53, 53, 53)
                 .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,20 +211,27 @@ public class TelaClientes extends javax.swing.JFrame {
                     .addComponent(lblNomeProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeProduto1)
-                    .addComponent(txtPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblObrigatorio2))
+                    .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblObrigatorio2)
+                    .addComponent(jRadioCNPJ)
+                    .addComponent(jRadioCPF))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblObrigatorio3)
+                    .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrecoProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNomeProduto2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeProduto2)
-                    .addComponent(cmbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblObrigatorio3))
-                .addGap(65, 65, 65)
+                    .addComponent(txtPrecoProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblObrigatorio4)
+                    .addComponent(lblNomeProduto3))
+                .addGap(18, 18, 18)
                 .addGroup(pnlClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar)
                     .addComponent(btnFechar))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Cadastros");
@@ -272,33 +318,29 @@ public class TelaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        System.exit(0);
+      this.dispose();  
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtNomeProduto.setText(null);
-        txtPrecoProduto.setText(null);
+        txtCNPJ.setText(null);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void cmbUnidadeMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUnidadeMedidaActionPerformed
+    private void txtCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCNPJActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbUnidadeMedidaActionPerformed
-
-    private void txtPrecoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecoProdutoActionPerformed
+    }//GEN-LAST:event_txtCNPJActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         try{
-            this.produto = new Produto(txtNomeProduto.getText(),txtPrecoProduto.getText(), (String) cmbUnidadeMedida.getSelectedItem());
+            this.produto = new Produto(txtNomeProduto.getText(),txtCNPJ.getText());
              ProdutoDAO produtoDao = new ProdutoDAO();
              produtoDao.inserirProduto(produto);
              txtNomeProduto.setText(null);
-             txtPrecoProduto.setText(null);
+             txtCNPJ.setText(null);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -336,6 +378,18 @@ public class TelaClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void txtPrecoProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoProduto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecoProduto1ActionPerformed
+
+    private void txtPrecoProduto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoProduto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecoProduto2ActionPerformed
+
+    private void jRadioCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioCPFActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,20 +407,20 @@ public class TelaClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEntidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEntidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEntidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEntidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaClientes().setVisible(true);
+                new TelaEntidade().setVisible(true);
             }
         });
     }
@@ -375,7 +429,9 @@ public class TelaClientes extends javax.swing.JFrame {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox cmbUnidadeMedida;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -387,15 +443,20 @@ public class TelaClientes extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JRadioButton jRadioCNPJ;
+    private javax.swing.JRadioButton jRadioCPF;
     private javax.swing.JLabel lblNomeProduto;
-    private javax.swing.JLabel lblNomeProduto1;
     private javax.swing.JLabel lblNomeProduto2;
+    private javax.swing.JLabel lblNomeProduto3;
     private javax.swing.JLabel lblObrigatorio1;
     private javax.swing.JLabel lblObrigatorio2;
     private javax.swing.JLabel lblObrigatorio3;
+    private javax.swing.JLabel lblObrigatorio4;
     private javax.swing.JMenuBar menuPrincipal;
     private javax.swing.JPanel pnlClientes;
+    private javax.swing.JTextField txtCNPJ;
     private javax.swing.JTextField txtNomeProduto;
-    private javax.swing.JTextField txtPrecoProduto;
+    private javax.swing.JTextField txtPrecoProduto1;
+    private javax.swing.JTextField txtPrecoProduto2;
     // End of variables declaration//GEN-END:variables
 }

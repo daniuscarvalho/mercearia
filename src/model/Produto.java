@@ -1,7 +1,6 @@
 package model;
 
 import control.Validar;
-import control.ValidarException;
 import javax.swing.JOptionPane;
 
 
@@ -11,17 +10,18 @@ public class Produto {
 	private double precoUnitario;
 	private String tipoUnidade;
 	private Validar validar;
-	public Produto(String nome){
-		this.setNome(nome);
-	}
-	
+        
+        	
 	public Produto(String nome, String precoUnitario,String tipoUnidade) throws Exception{
-       // public Produto(String nome, double precoUnitario){
-       //  public Produto(String nome, String precoUnitario) {
-		this.setNome(nome);
+        	validar = new Validar();	
+                this.setNome(nome);
 		this.setPrecoUnitario(precoUnitario);
-                validar = new Validar();
 		this.setTipoUnidade(tipoUnidade);
+	}
+        public Produto(String nome, String precoUnitario) throws Exception{
+                validar = new Validar();	
+                this.setNome(nome);
+		this.setPrecoUnitario(precoUnitario);
 	}
 	
 	
@@ -29,30 +29,18 @@ public class Produto {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		try{
-                    new Validar().validarString(nome);
-                    this.nome = nome;
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-                }
+	public void setNome(String nome) throws Exception {
+            validar.ValidarObrigatorios(nome,"texto");
+            this.nome = nome;
                 
 	}
-	public double getPrecoUnitario() {
-            
-		return precoUnitario;
+	public double getPrecoUnitario() {   
+            return precoUnitario;
 	}
 	public void setPrecoUnitario(String precoUnitario) throws Exception{
-                try{
-                    new Validar().validarNumeros(precoUnitario);
-                    this.precoUnitario = Double.parseDouble(precoUnitario);
-                }finally{
-                    
-                }
-                    //JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-                    //JOptionPane.showMessageDialog(null, e.getMessage());
+            validar.ValidarObrigatorios(precoUnitario,"numero");    
+            this.precoUnitario = Double.parseDouble(precoUnitario);
                
-		
 	}
 	public String getTipoUnidade() {
 		return tipoUnidade;

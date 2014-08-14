@@ -6,30 +6,27 @@
 
 package viewer;
 
-import DAO.ProdutoDAO;
-import control.Validar;
-import control.ValidarException;
-import javax.swing.JOptionPane;
-import model.Produto;
 
-/**
- *
- * @author felipe
- */
+import control.ProdutoCrtl;
+
 public class TelaProdutos extends javax.swing.JFrame {
-    
-    private Produto produto;
-    
-    /**
-     * Creates new form TelaProdutos
-     */
+
     public TelaProdutos() {
         initComponents();
-        lblObrigatorio1.setVisible(false);
-        lblObrigatorio2.setVisible(false);
-        lblObrigatorio3.setVisible(false);
+         lblObrigatorio1.setVisible(false);
+         lblObrigatorio2.setVisible(false);
+         lblObrigatorio3.setVisible(false);
     }
-
+    public void nomeProdutoObrigatorio(){
+       lblObrigatorio1.setVisible(true);
+    }
+    public void precoProdutoObrigatorio(){
+        lblObrigatorio2.setVisible(true);
+    }
+    public void limparTelaProduto(){
+         this.txtNomeProduto.setText("");
+         this.txtPrecoProduto.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,9 +51,8 @@ public class TelaProdutos extends javax.swing.JFrame {
         lblObrigatorio3 = new javax.swing.JLabel();
         menuPrincipal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuEntidade = new javax.swing.JMenuItem();
+        jMenuProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -70,7 +66,7 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         pnlProduto.setName(""); // NOI18N
 
-        lblNomeProduto.setText("Entre com o nome do Produto:");
+        lblNomeProduto.setText("Nome do Produto:");
 
         txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,9 +87,9 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
-        lblNomeProduto1.setText("Entre com o preço do Produto:");
+        lblNomeProduto1.setText("Preço Unitario");
 
-        lblNomeProduto2.setText("Escolha a unidade de medida:");
+        lblNomeProduto2.setText("Unidade de Medida:");
 
         cmbUnidadeMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Unidade", "Litro" }));
         cmbUnidadeMedida.addActionListener(new java.awt.event.ActionListener() {
@@ -130,45 +126,47 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlProdutoLayout.setHorizontalGroup(
             pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlProdutoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlProdutoLayout.createSequentialGroup()
-                        .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNomeProduto1)
-                            .addComponent(lblNomeProduto))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlProdutoLayout.createSequentialGroup()
-                                .addComponent(lblObrigatorio2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(pnlProdutoLayout.createSequentialGroup()
-                                        .addComponent(btnSalvar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnLimpar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFechar))
-                                    .addComponent(txtPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlProdutoLayout.createSequentialGroup()
-                                .addComponent(lblObrigatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomeProduto))))
+                        .addGap(212, 212, 212)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFechar))
                     .addGroup(pnlProdutoLayout.createSequentialGroup()
-                        .addComponent(lblNomeProduto2)
-                        .addGap(16, 16, 16)
-                        .addComponent(lblObrigatorio3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbUnidadeMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addGap(101, 101, 101)
+                        .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlProdutoLayout.createSequentialGroup()
+                                    .addGap(133, 133, 133)
+                                    .addComponent(lblObrigatorio2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutoLayout.createSequentialGroup()
+                                    .addComponent(lblNomeProduto1)
+                                    .addGap(250, 250, 250))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutoLayout.createSequentialGroup()
+                                    .addComponent(lblNomeProduto)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblObrigatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlProdutoLayout.createSequentialGroup()
+                                .addComponent(lblNomeProduto2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblObrigatorio3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         pnlProdutoLayout.setVerticalGroup(
             pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlProdutoLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblObrigatorio1))
+                .addGap(81, 81, 81)
+                .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblObrigatorio1)
                     .addComponent(lblNomeProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,7 +178,7 @@ public class TelaProdutos extends javax.swing.JFrame {
                     .addComponent(lblNomeProduto2)
                     .addComponent(cmbUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblObrigatorio3))
-                .addGap(65, 65, 65)
+                .addGap(28, 28, 28)
                 .addGroup(pnlProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar)
@@ -190,24 +188,21 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEntidade.setText("Cliente/Forneceador");
+        jMenuEntidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuEntidadeActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuEntidade);
 
-        jMenuItem2.setText("Fornecedor");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuProduto.setText("Produto");
+        jMenuProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuProdutoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMenuProduto);
 
         menuPrincipal.add(jMenu1);
 
@@ -272,15 +267,13 @@ public class TelaProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        System.exit(0);
+        this.dispose();  
+        //System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        txtNomeProduto.setText(null);
-        txtPrecoProduto.setText(null);
-
-        // TODO add your handling code here:
+        this.limparTelaProduto();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void cmbUnidadeMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUnidadeMedidaActionPerformed
@@ -292,17 +285,8 @@ public class TelaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecoProdutoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
-        try{
-            this.produto = new Produto(txtNomeProduto.getText(),txtPrecoProduto.getText(), (String) cmbUnidadeMedida.getSelectedItem());
-             ProdutoDAO produtoDao = new ProdutoDAO();
-             produtoDao.inserirProduto(produto);
-             txtNomeProduto.setText(null);
-             txtPrecoProduto.setText(null);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-       
+             ProdutoCrtl produtoCrtl = new ProdutoCrtl();
+             produtoCrtl.inserirProduto(txtNomeProduto, txtPrecoProduto);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
@@ -310,13 +294,11 @@ public class TelaProdutos extends javax.swing.JFrame {
         // TODO<nenhum> add your handling code here:
     }//GEN-LAST:event_txtNomeProdutoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuEntidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEntidadeActionPerformed
+        TelaEntidade telaEntidade = new TelaEntidade();
+        telaEntidade.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuEntidadeActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
@@ -335,6 +317,12 @@ public class TelaProdutos extends javax.swing.JFrame {
         System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProdutoActionPerformed
+        TelaProdutos telaProdutos = new TelaProdutos();
+        telaProdutos.setFocusable(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,14 +367,13 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuEntidade;
     private javax.swing.JMenu jMenuFechar;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuProduto;
     private javax.swing.JLabel lblNomeProduto;
     private javax.swing.JLabel lblNomeProduto1;
     private javax.swing.JLabel lblNomeProduto2;

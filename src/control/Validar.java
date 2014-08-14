@@ -3,17 +3,24 @@ package control;
 import javax.swing.JOptionPane;
 
 public class Validar {
+    
+    public void ValidarObrigatorios(String texto,String tipo)throws Exception{
+        this.validarNull(texto);
+    }
+    public void Validar(String texto,String tipo)throws Exception{
+        this.validarNull(texto);
+    }
 
-    public void validarString(String texto){
+    private void validarNull(String texto) throws Exception{
         
-        if (texto.equals(null)){
-            JOptionPane.showMessageDialog(null, "nulo");
-            
+        if ((texto.isEmpty()) || (texto.equals(null) || (texto==""))){
+                throw new Exception("Preencha os campos obrigatorios.");
+            //JOptionPane.showMessageDialog(null, "nulo");
         }
         
         
     }
-    public void validarNumeros(String numero) throws Exception{
+    private void validarNumeros(String numero) throws Exception{
 {                
           for (int i = 0; i < numero.length(); i++) {  
               if (!Character.isDigit(numero.charAt(i)))   

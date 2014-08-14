@@ -8,14 +8,13 @@ package control;
 
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author felipe
  */
-public class ValidarException extends Exception{
-    
-    public  ValidarException(String msg){
+public class ValidarExceptionNull extends Exception{
+ 
+     public  ValidarExceptionNull(String msg){
         JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
