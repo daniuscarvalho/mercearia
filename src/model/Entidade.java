@@ -13,7 +13,7 @@ public class Entidade {
 		this.setTipo(tipo);
 	}
 
-	String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
